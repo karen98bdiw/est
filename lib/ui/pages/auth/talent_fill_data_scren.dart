@@ -3,6 +3,7 @@ import 'package:estimators/base/images.dart';
 import 'package:estimators/data/country.dart';
 import 'package:estimators/manager/manager.dart';
 import 'package:estimators/models/auth/auth.dart';
+import 'package:estimators/ui/pages/auth/talent_additional_data_fill_screen.dart';
 import 'package:estimators/ui/widgets/buttons.dart';
 import 'package:estimators/ui/widgets/common.dart';
 import 'package:estimators/ui/widgets/inputs.dart';
@@ -10,16 +11,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uuid/uuid.dart';
 
-class ClientDataFillScreen extends StatefulWidget {
+class TalentDataFillScreen extends StatefulWidget {
   final SignUpRequest model;
 
-  ClientDataFillScreen({required this.model});
+  TalentDataFillScreen({required this.model});
 
   @override
-  _ClientDataFillScreenState createState() => _ClientDataFillScreenState();
+  _TallentAdditionalDataFillScreenState createState() =>
+      _TallentAdditionalDataFillScreenState();
 }
 
-class _ClientDataFillScreenState extends State<ClientDataFillScreen> {
+class _TallentAdditionalDataFillScreenState
+    extends State<TalentDataFillScreen> {
   CountryAndFlags pickerCountry = CountryAndFlags(
     name: "Armenia",
     flag: "🇦🇲",
@@ -53,26 +56,8 @@ class _ClientDataFillScreenState extends State<ClientDataFillScreen> {
   void onSave() async {
     resetModel();
 
-    if (isCopmany) {
-      widget.model.clientRequest = ClientRequest();
-      widget.model.clientRequest!.clientType = "COMPANY";
-      widget.model.role = "ROLE_CLIENT";
-    } else {
-      widget.model.role = "ROLE_CLIENT";
-      widget.model.profileRequest = ProfileRequest();
-      widget.model.clientRequest!.clientType = "INDIVIDUAL";
-    }
-
-    formState.currentState!.save();
-    setState(() {
-      isLoading = true;
-    });
-    var res = await EstimateManager().authManager!.signUp(
-          signUpRequest: widget.model,
-        );
-    setState(() {
-      isLoading = false;
-    });
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (c) => TalentAdditionaFillDataScreen()));
   }
 
   void resetModel() {

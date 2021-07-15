@@ -5,6 +5,5 @@ class AuthManager {
   Future<dynamic> signUp({SignUpRequest? signUpRequest}) async {
     var res =
         await EstimatorsApi().authApi!.signUp(signUpRequest: signUpRequest);
-    print("response $res");
   }
 }

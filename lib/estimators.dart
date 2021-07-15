@@ -1,4 +1,5 @@
 import 'package:estimators/api/api.dart';
+import 'package:estimators/base/keys.dart';
 import 'package:estimators/manager/manager.dart';
 import 'package:estimators/models/auth/auth.dart';
 import 'package:estimators/ui/pages/auth/check_action_screen.dart';
@@ -11,6 +12,7 @@ class EstimatorsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navKey,
       home: CheckActionScreen(),
     );
   }

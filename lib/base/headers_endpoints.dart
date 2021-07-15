@@ -5,4 +5,5 @@ class EstimateEndPoints {
 
   static final user = "/user";
   static final userRegister = "/register";
+  static final proffesions = "/proffesions";
 }

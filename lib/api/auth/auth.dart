@@ -11,20 +11,15 @@ class AuthApi {
   Future<dynamic> signUp({SignUpRequest? signUpRequest}) async {
     Uuid uuid = Uuid();
     print("${signUpRequest!.toJson()}");
-    try {
-      Response res = await dio!.post(
-        "/user/register",
-        data: signUpRequest.toJson(),
-        options: Options(headers: {
-          "client-id": "application-client",
-        }),
-      );
-      print(res.statusCode);
 
-      return res.data;
-    } catch (e) {
-      var error = (e as DioError);
-      print("ERROR ${error.message}");
-    }
+    Response res = await dio!.post(
+      "/user/register",
+      data: signUpRequest.toJson(),
+      options: Options(headers: {
+        "client-id": "application-client",
+        "Content-type": "application/json",
+      }),
+    );
+    print(res.data);
   }
 }

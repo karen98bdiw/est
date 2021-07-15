@@ -26,7 +26,7 @@ class SignUpRequest {
     this.password,
     this.phoneNumber,
     this.profileRequest,
-    this.role,
+    this.role = "ROLE_GROUP",
   });
 
   Map<String, dynamic> toJson() {
@@ -49,9 +49,9 @@ class SignUpRequest {
     }
     data['password'] = this.password;
     data['phoneNumber'] = this.phoneNumber;
-    if (this.profileRequest != null) {
-      data['profileRequest'] = this.profileRequest!.toJson();
-    }
+    // if (this.profileRequest != null) {
+    //   data['profileRequest'] = this.profileRequest!.toJson();
+    // }
     data['role'] = this.role;
     if (this.skills != null) {
       data['skills'] = this.skills!.map((v) => v.toJson()).toList();
@@ -67,14 +67,17 @@ class Location {
   String? streetAddress;
   String? zipCode;
   String? country;
+  String? id;
 
-  Location(
-      {this.country,
-      this.aptSuite,
-      this.city,
-      this.state,
-      this.streetAddress,
-      this.zipCode});
+  Location({
+    this.country,
+    this.aptSuite,
+    this.city,
+    this.state,
+    this.streetAddress,
+    this.zipCode,
+    this.id,
+  });
 
   Map<String, dynamic> toJson() {
     var data = Map<String, dynamic>();
@@ -115,12 +118,14 @@ class ClientRequest {
   String? clientType;
   String? companyName;
   String? yourPosition;
+  String? id;
 
-  ClientRequest({this.clientType, this.companyName, this.yourPosition});
+  ClientRequest(
+      {this.clientType, this.companyName, this.yourPosition, this.id});
 
   Map<String, dynamic> toJson() {
     var data = Map<String, dynamic>();
-    data["clientType"] = this.clientType!;
+    data["clientType"] = this.clientType;
     data["companyName"] = this.companyName;
     data["yourPosition"] = this.yourPosition;
     return data;

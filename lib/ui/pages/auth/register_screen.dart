@@ -1,3 +1,4 @@
+import 'package:estimators/api/api.dart';
 import 'package:estimators/base/common/apply_picker.dart';
 import 'package:estimators/base/common/country_picker.dart';
 import 'package:estimators/base/const.dart';
@@ -6,6 +7,7 @@ import 'package:estimators/base/styles/style_values.dart';
 import 'package:estimators/data/country.dart';
 import 'package:estimators/models/auth/auth.dart';
 import 'package:estimators/ui/pages/auth/client_data_fill_screen.dart';
+import 'package:estimators/ui/pages/auth/talent_fill_data_scren.dart';
 import 'package:estimators/ui/widgets/buttons.dart';
 import 'package:estimators/ui/widgets/common.dart';
 import 'package:estimators/ui/widgets/inputs.dart';
@@ -58,10 +60,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (c) => ClientDataFillScreen(model: signUpRequest),
       ));
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (c) => TalentDataFillScreen(
+                  model: signUpRequest,
+                )),
+      );
     }
-    print("model ${signUpRequest.toJson()}");
-    print("IS CLIENT $isClient");
-    print("on sign up");
   }
 
   @override

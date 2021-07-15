@@ -64,6 +64,11 @@ class CustomFormInput extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 16),
       child: TextFormField(
+        initialValue: controller == null
+            ? hint == "Email"
+                ? "vvv123@mailinator.com"
+                : "test"
+            : null,
         controller: controller,
         textAlign: textCentered! ? TextAlign.center : TextAlign.start,
         obscureText: obscureText!,
